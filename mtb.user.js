@@ -48,4 +48,12 @@ with(window)
     initSupersonicAds = function(){};
     initTrialpayBanner = function(){};
     initVideoAds = function(){};
+
+    getDealSpotArmor = function(){};
+    getDealSpotEnergy1 = function(){};
+    getDealSpotEnergy2 = function(){};
+    getDealSpotEnergy3 = function(){};
+    getDealSpotEnergy4 = function(){};
+    getDealSpotCash = function(){};
+    dealspotOfferComplete = function(){};
 }
