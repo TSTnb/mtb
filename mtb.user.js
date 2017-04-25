@@ -34,4 +34,18 @@ with(window)
     videoOnComplete = function(){};
     videoOnOpen = function(){};
     videoOnReward = function(){};
+
+    initAdvertisements = function(){};
+    initAdvertisementsComplete = function(){};
+    initAnalytics = function(){};
+    initBanner = function(){};
+    initEbuzzing = function(){};
+    initHouseAds = function(){};
+    initVideoAds = function(){};
+    initSponsorPayArmor = function(){};
+    initSponsorPayEnergy = function(){};
+    initSponsorPayGatcha = function(){};
+    initSupersonicAds = function(){};
+    initTrialpayBanner = function(){};
+    initVideoAds = function(){};
 }
