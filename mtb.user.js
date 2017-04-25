@@ -56,4 +56,9 @@ with(window)
     getDealSpotEnergy4 = function(){};
     getDealSpotCash = function(){};
     dealspotOfferComplete = function(){};
+
+    trialPayOnAvailable = function(){};
+    trialPayOnComplete = function(){};
+    trialPayOnUnavailable = function(){};
+    trialPayPaymentOverlayScript = "about:blank";
 }
