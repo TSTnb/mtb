@@ -65,4 +65,9 @@ with(window)
     trackEvent = function(){};
     trackFlashEvent = function(){};
     trackGAEvent = function(){};
+
+    refreshAdvertisements = function(){};
+    houseOnOpen = function(){};
+    spotxOnOpen = function(){};
+    FB.log = function(){};
 }
