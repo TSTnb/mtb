@@ -9,3 +9,16 @@
 // @version 0.0.1
 // @author morningpee
 // ==/UserScript==
+
+with(window)
+{
+    sponsorpayTimerId = -1
+    sponsorpayScript = "about:blank";
+    sponsorpayOnRefresh = function(){};
+    sponsorpayOnReady = function(){};
+    sponsorpayOnOpen = function(){};
+    sponsorpayOnComplete = function(){};
+    sponsorpayOnClose = function(){};
+    sponsorpayOffers = [];
+    sponsorpayIsAvailable = function(){ return false; }
+}
