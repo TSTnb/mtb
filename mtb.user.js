@@ -21,4 +21,17 @@ with(window)
     sponsorpayOnClose = function(){};
     sponsorpayOffers = [];
     sponsorpayIsAvailable = function(){ return false; }
+
+    jungroupOnOpen = function(){};
+    jungroupOnClose = function(){};
+    jungroupOnComplete = function(){};
+
+    videoAdId = -1;
+    videoAdReward = -1;
+    videoAdRewardType = "energy";
+    videoOnAdVisible = false;
+    videoOnClose = function(){};
+    videoOnComplete = function(){};
+    videoOnOpen = function(){};
+    videoOnReward = function(){};
 }
