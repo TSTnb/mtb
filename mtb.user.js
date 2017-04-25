@@ -61,4 +61,8 @@ with(window)
     trialPayOnComplete = function(){};
     trialPayOnUnavailable = function(){};
     trialPayPaymentOverlayScript = "about:blank";
+
+    trackEvent = function(){};
+    trackFlashEvent = function(){};
+    trackGAEvent = function(){};
 }
