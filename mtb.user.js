@@ -83,4 +83,6 @@ with(window)
     liveRailTest = function(){};
     liveRailSpotxTest = function(){};
     liveRailOnOpen = function(){};
+
+    onPageLoad = {};
 }
