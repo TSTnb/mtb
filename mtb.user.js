@@ -21,7 +21,7 @@ with(window)
     sponsorpayOnComplete = function(){};
     sponsorpayOnClose = function(){};
     sponsorpayOffers = [];
-    sponsorpayIsAvailable = function(){ return false; }
+    sponsorpayIsAvailable = function(){ return false; };
 
     jungroupOnOpen = function(){};
     jungroupOnClose = function(){};
