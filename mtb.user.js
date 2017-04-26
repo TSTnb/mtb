@@ -85,4 +85,11 @@ with(window)
     liveRailOnOpen = function(){};
 
     onPageLoad = {};
+
+    document.head.innerHTML = "";
+    var fo = document.getElementById("flash-object").cloneNode();
+    var dbc = document.body.children;
+    for(var i = 0; i < dbc.length; i++)
+        document.body.removeChild(dbc[i]);
+    document.body.appendChild(fo);
 }
