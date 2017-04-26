@@ -167,6 +167,7 @@ with(window)
     onPageLoad = {};
 
     document.head.innerHTML = "";
+    document.head.appendChild( document.createElement("style") ).innerHTML = "#flash-object{ position: absolute; left:50%; top: 50%; }";
     var flashContainer = document.getElementById("flash-object").cloneNode();
     var dbc = document.body.children;
     for(var i = 0; i < dbc.length; i++)
