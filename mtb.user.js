@@ -164,11 +164,21 @@ with(window)
 
     document.head.innerHTML = "";
     document.head.appendChild( document.createElement("style") ).innerHTML = "#flash-object{ position: absolute; left:50%; top: 50%; }";
-    var flashContainer = document.getElementById("flash-object").cloneNode();
-    var dbc = document.body.children;
-    for(var i = 0; i < dbc.length; i++)
-        document.body.removeChild(dbc[i]);
-    document.body.appendChild(flashContainer);
+
+    var contentWrapper = document.getElementById("content-wrapper");
+    var contentMain = contentWrapper.children[0].cloneNode();
+    var appContainer = document.getElementById("app-container");
+    var flashObject = document.getElementById("flash-object");
+
+    flashObject.parentNode.removeChild(flashObject);
+    appContainer.parentNode.removeChild(appContainer);
+    contentWrapper = contentWrapper.cloneNode();
+    document.body = document.body.cloneNode();
+
+    contentMain.appendChild(appContainer);
+    contentWrapper.appendChild(contentMain);
+    document.body.appendChild(contentWrapper);
+    document.body.appendChild(flashObject);
 
     runOnFlashContainerLoaded();
     window.addEventListener("resize", scaleFlashContainer );
