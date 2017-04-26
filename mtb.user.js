@@ -32,6 +32,39 @@ function getFlashContainerSize()
     flashContainer.style.height = flashContainerSize.originalHeight + "px";
 }
 
+function scaleFlashContainer()
+{
+    flashContainer.style.visibility = "initial";
+    var windowAspectRatio = innerHeight / innerWidth;
+
+    var flashContainerAspectRatio = flashContainerSize.originalHeight / flashContainerSize.originalWidth;
+
+    var scaleFactorX, scaleFactorY;
+    var updatedWidth, updatedHeight;
+
+    if(  flashContainerAspectRatio > windowAspectRatio )
+    {
+        updatedWidth = Math.round( innerHeight / flashContainerAspectRatio );
+        updatedHeight = innerHeight;
+    }
+    else
+    {
+        updatedWidth = innerWidth;
+        updatedHeight = Math.round( innerWidth * flashContainerAspectRatio );
+    }
+
+    scaleFactorX = updatedWidth / flashContainerSize.originalWidth;
+    scaleFactorY = updatedHeight / flashContainerSize.originalHeight;
+    flashContainer.TSetProperty("/", flashContainerSize.T_WIDTH_SCALE_INDEX, 100 * scaleFactorX);
+    flashContainer.TSetProperty("/", flashContainerSize.T_HEIGHT_SCALE_INDEX, 100 * scaleFactorY);
+
+    flashContainer.style.marginLeft = -updatedWidth / 2 + "px";
+    flashContainer.style.marginTop = -updatedHeight / 2 + "px";
+
+    flashContainer.style.width = updatedWidth + "px";
+    flashContainer.style.height = updatedHeight + "px";
+}
+
 with(window)
 {
     sponsorpayTimerId = -1;
