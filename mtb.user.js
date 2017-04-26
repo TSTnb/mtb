@@ -72,4 +72,11 @@ with(window)
     lifestreetOnOpen = function(){};
     spotxOnOpen = function(){};
     FB.log = function(){};
+
+    optimatic = null;
+    optimaticAdTime = -1;
+    optimaticTimeout = -1;
+    optimaticOnOpen = function(){};
+    optimaticRemoveIframe = function(){};
+    optimaticShowStatic = function(){};
 }
