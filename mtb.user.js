@@ -163,7 +163,7 @@ with(window)
     onPageLoad = {};
 
     document.head.innerHTML = "";
-    document.head.appendChild( document.createElement("style") ).innerHTML = "#flash-object{ position: absolute; left:50%; top: 50%; }";
+    document.head.appendChild( document.createElement("style") ).innerHTML = "body{ position:relative; margin: 0; } #flash-object{ position: absolute; left: 50%; top: calc( 100% / 1.8 ); margin-left: -25%; margin-top: -25%; }";
 
     var contentWrapper = document.getElementById("content-wrapper");
     var contentMain = contentWrapper.children[0].cloneNode();
