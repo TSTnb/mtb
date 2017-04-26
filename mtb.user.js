@@ -69,6 +69,7 @@ with(window)
 
     refreshAdvertisements = function(){};
     houseOnOpen = function(){};
+    lifestreetOnOpen = function(){};
     spotxOnOpen = function(){};
     FB.log = function(){};
 }
