@@ -173,5 +173,8 @@ with(window)
     for(var i = 0; i < dbc.length; i++)
         document.body.removeChild(dbc[i]);
     document.body.appendChild(flashContainer);
+
+    runOnFlashContainerLoaded();
+    window.addEventListener("resize", scaleFlashContainer );
 }
 
