@@ -7,7 +7,7 @@
 // @include http*://tbc.tetrisfb.com/index.php*
 // @grant none
 // @run-at document-end
-// @version 0.0.4
+// @version 0.0.5
 // @author morningpee
 // ==/UserScript==
 
