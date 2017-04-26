@@ -11,6 +11,27 @@
 // @author morningpee
 // ==/UserScript==
 
+function getFlashContainerSize()
+{
+    flashContainerSize = new Object();
+
+    flashContainerSize.T_PAN_X_INDEX = 0;
+    flashContainerSize.T_PAN_Y_INDEX = 1;
+
+    flashContainerSize.T_WIDTH_SCALE_INDEX = 2;
+    flashContainerSize.T_HEIGHT_SCALE_INDEX = 3;
+
+    flashContainerSize.T_WIDTH_INDEX = 8;
+    flashContainerSize.T_HEIGHT_INDEX = 9;
+    flashContainerSize.T_QUALITY_INDEX = 19;
+
+    flashContainerSize.originalWidth = 760;
+    flashContainerSize.originalHeight = 700;
+
+    flashContainer.style.width = flashContainerSize.originalWidth + "px";
+    flashContainer.style.height = flashContainerSize.originalHeight + "px";
+}
+
 with(window)
 {
     sponsorpayTimerId = -1;
