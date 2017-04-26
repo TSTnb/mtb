@@ -163,7 +163,7 @@ with(window)
     onPageLoad = {};
 
     document.head.innerHTML = "";
-    document.head.appendChild( document.createElement("style") ).innerHTML = "body{ position:relative; margin: 0; } #flash-object{ position: absolute; left: 50%; top: calc( 100% / 1.8 ); margin-left: -25%; margin-top: -25%; }";
+    document.head.appendChild( document.createElement("style") ).innerHTML = "body{ position:relative; margin: 0; } #flash-object{ position: absolute; left: 50%; top: calc( 100% / 1.8 ); margin-left: -25%; margin-top: -25%; } #flash-container, #page-container{ height: calc( 350px + 37.5px ) !important; }";
 
     var contentWrapper = document.getElementById("content-wrapper");
     var contentMain = contentWrapper.children[0].cloneNode();
