@@ -12,7 +12,7 @@
 
 with(window)
 {
-    sponsorpayTimerId = -1
+    sponsorpayTimerId = -1;
     sponsorpayScript = "about:blank";
     sponsorpayOnRefresh = function(){};
     sponsorpayOnReady = function(){};
