@@ -177,4 +177,3 @@ with(window)
     runOnFlashContainerLoaded();
     window.addEventListener("resize", scaleFlashContainer );
 }
-
