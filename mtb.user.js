@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Minimal Tetris Battle
 // @namespace minimaltetrisbattle
-// @description Reduces lag as much as possible
+// @description Reduces TB lag as much as possible
 // @include http*://tbc.tetrisfb.com/
 // @include http*://tbc.tetrisfb.com/?*
 // @include http*://tbc.tetrisfb.com/index.php*
