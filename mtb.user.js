@@ -71,7 +71,7 @@ with(window)
     houseOnOpen = function(){};
     lifestreetOnOpen = function(){};
     spotxOnOpen = function(){};
-    FB.log = function(){};
+    FB = null;
 
     optimatic = null;
     optimaticAdTime = -1;
