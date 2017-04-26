@@ -65,6 +65,32 @@ function scaleFlashContainer()
     flashContainer.style.height = updatedHeight + "px";
 }
 
+function runOnFlashContainerLoaded()
+{
+    flashContainer = document.getElementById("flash-object");
+    var percentLoaded = "0";
+    try{
+        percentLoaded = flashContainer.PercentLoaded();
+
+        /* this line will fail if it is not loaded */
+        flashContainer.TGetProperty('/', 0);
+    }
+    catch(e){
+        percentLoaded = "0";
+    }
+    if( percentLoaded != "100" )
+       return setTimeout( runOnFlashContainerLoaded, 5000 );
+    getFlashContainerSize();
+    flashContainer.TSetProperty('/', flashContainerSize.T_QUALITY_INDEX, "LOW");
+
+    var isFirefox = navigator.userAgent.search(/webkit/i) == -1;
+    if( isFirefox )
+    {
+        scaleFlashContainer();
+    }
+
+}
+
 with(window)
 {
     sponsorpayTimerId = -1;
