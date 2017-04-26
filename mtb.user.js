@@ -83,11 +83,7 @@ function runOnFlashContainerLoaded()
     getFlashContainerSize();
     flashContainer.TSetProperty('/', flashContainerSize.T_QUALITY_INDEX, "LOW");
 
-    var isFirefox = navigator.userAgent.search(/webkit/i) == -1;
-    if( isFirefox )
-    {
-        scaleFlashContainer();
-    }
+    scaleFlashContainer();
 
 }
 
