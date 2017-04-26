@@ -79,4 +79,8 @@ with(window)
     optimaticOnOpen = function(){};
     optimaticRemoveIframe = function(){};
     optimaticShowStatic = function(){};
+
+    liveRailTest = function(){};
+    liveRailSpotxTest = function(){};
+    liveRailOnOpen = function(){};
 }
