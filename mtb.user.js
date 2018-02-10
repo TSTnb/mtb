@@ -7,7 +7,7 @@
 // @include http*://tbc.tetrisfb.com/index.php*
 // @grant none
 // @run-at document-end
-// @version 0.0.12
+// @version 0.0.13
 // @author morningpee
 // ==/UserScript==
 
@@ -198,10 +198,11 @@ function main()
         resizeButton.setAttribute('type', 'checkbox');
         resizeButton.setAttribute('checked', 'checked');
         resizeButton.setAttribute('id', 'resize_button');
-        resizeButton.setAttribute('onchange', 'scaleFlashContainer();');
         var resizeButtonLabel = document.createElement('label');
         resizeButtonLabel.appendChild(resizeButton);
         resizeButtonLabel.innerHTML += 'Full screen';
+        /* has to come after innerHTML edit */
+        resizeButtonLabel.children[0].addEventListener('change', scaleFlashContainer);
 
         buttons.appendChild(messageButton);
         buttons.appendChild(document.createElement('br'));
