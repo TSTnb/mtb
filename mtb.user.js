@@ -7,7 +7,7 @@
 // @include http*://tbc.tetrisfb.com/index.php*
 // @grant none
 // @run-at document-end
-// @version 0.0.14
+// @version 0.0.15
 // @author morningpee
 // ==/UserScript==
 
@@ -39,7 +39,10 @@ function main()
         var fullScreen = document.getElementById('resize_button').checked;
 
         flashContainer.style.visibility = "initial";
-        var windowAspectRatio = innerHeight / innerWidth;
+        var screenHeight = screen.height - 100,
+            screenWidth = innerWidth;
+        var windowAspectRatio = screenHeight / screenWidth;
+        flashContainer.style.top = 'calc(' + screenHeight + 'px / 1.8)';
 
         var flashContainerAspectRatio = flashContainerSize.originalHeight / flashContainerSize.originalWidth;
 
@@ -49,11 +52,11 @@ function main()
 
         if(fullScreen === true) {
             if(  flashContainerAspectRatio > windowAspectRatio ) {
-                updatedWidth = Math.round( innerHeight / flashContainerAspectRatio );
-                updatedHeight = innerHeight;
+                updatedWidth = Math.round( screenHeight / flashContainerAspectRatio );
+                updatedHeight = screenHeight;
             } else {
-                updatedWidth = innerWidth;
-                updatedHeight = Math.round( innerWidth * flashContainerAspectRatio );
+                updatedWidth = screenWidth;
+                updatedHeight = Math.round( screenWidth * flashContainerAspectRatio );
             }
         }
 
@@ -63,7 +66,7 @@ function main()
         flashContainer.TSetProperty("/", flashContainerSize.T_HEIGHT_SCALE_INDEX, 100 * scaleFactorY);
 
         flashContainer.style.marginLeft = -updatedWidth / 2 + "px";
-        flashContainer.style.marginTop = -updatedHeight / 2 + "px";
+        flashContainer.style.marginTop = (-updatedHeight / 1.8) + "px";
 
         flashContainer.style.width = updatedWidth + "px";
         flashContainer.style.height = updatedHeight + "px";
@@ -88,6 +91,7 @@ function main()
         flashContainer.TSetProperty('/', flashContainerSize.T_QUALITY_INDEX, "LOW");
 
         scaleFlashContainer();
+        document.getElementById('flash-object').scrollIntoView(true)
 
     }
 
@@ -174,7 +178,7 @@ function main()
             onPageLoad = {};
 
             document.head.innerHTML = "";
-            document.head.appendChild( document.createElement("style") ).innerHTML = "body{ position:relative; margin: 0; } #flash-object{ position: absolute; left: 50%; margin-left: -25%; margin-top: -25%; } _:-moz-tree-row(hover), #flash-object{ top: calc( 100% / 1.8 ); } @supports (-webkit-appearance:none) { #flash-object{ top: calc( 100% / 1.8 ); } } #flash-container, #page-container{ height: calc( 350px + 37.5px ) !important; }";
+            document.head.appendChild( document.createElement("style") ).innerHTML = "body{ position:relative; margin: 0; } #flash-object{ position: absolute; left: 50%; margin-left: -25%; margin-top: calc(-25% - 20px); } _:-moz-tree-row(hover), #flash-container, #page-container{ height: calc( 350px + 37.5px ) !important; }";
 
             var contentWrapper = document.getElementById("content-wrapper");
             var contentMain = contentWrapper.children[0].cloneNode();
