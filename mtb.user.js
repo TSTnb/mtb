@@ -7,7 +7,7 @@
 // @include http*://tbc.tetrisfb.com/index.php*
 // @grant none
 // @run-at document-end
-// @version 0.0.17
+// @version 0.0.16
 // @author morningpee
 // ==/UserScript==
 
@@ -39,7 +39,7 @@ function main()
         var fullScreen = document.getElementById('resize_button').checked;
 
         flashContainer.style.visibility = "initial";
-        var screenHeight = innerHeight;
+        var screenHeight = innerHeight
             screenWidth = innerWidth;
         var windowAspectRatio = screenHeight / screenWidth;
 
@@ -61,12 +61,14 @@ function main()
 
         scaleFactorX = updatedWidth / flashContainerSize.originalWidth;
         scaleFactorY = updatedHeight / flashContainerSize.originalHeight;
+        flashContainer.TSetProperty("/", flashContainerSize.T_WIDTH_SCALE_INDEX, 100 * scaleFactorX);
+        flashContainer.TSetProperty("/", flashContainerSize.T_HEIGHT_SCALE_INDEX, 100 * scaleFactorY);
 
         flashContainer.style.marginLeft = -updatedWidth / 2 + "px";
 
         flashContainer.style.width = updatedWidth + "px";
         flashContainer.style.height = updatedHeight + "px";
-    };
+    }
 
     function runOnFlashContainerLoaded()
     {
@@ -180,10 +182,6 @@ function main()
             var contentMain = contentWrapper.children[0].cloneNode();
             var appContainer = document.getElementById("app-container");
             var flashObject = document.getElementById("flash-object");
-            var scaleParam = document.createElement('param');
-            scaleParam.setAttribute('name', 'scale');
-            scaleParam.setAttribute('value', 'exactfit');
-            flashObject.appendChild(scaleParam);
 
             flashObject.parentNode.removeChild(flashObject);
             appContainer.parentNode.removeChild(appContainer);
