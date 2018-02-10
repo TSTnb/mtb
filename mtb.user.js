@@ -7,7 +7,7 @@
 // @include http*://tbc.tetrisfb.com/index.php*
 // @grant none
 // @run-at document-end
-// @version 0.0.13
+// @version 0.0.14
 // @author morningpee
 // ==/UserScript==
 
@@ -91,126 +91,136 @@ function main()
 
     }
 
-    with(window)
+    function runOnFlashExists()
     {
-        sponsorpayTimerId = -1;
-        sponsorpayScript = "about:blank";
-        sponsorpayOnRefresh = function(){};
-        sponsorpayOnReady = function(){};
-        sponsorpayOnOpen = function(){};
-        sponsorpayOnComplete = function(){};
-        sponsorpayOnClose = function(){};
-        sponsorpayOffers = [];
-        sponsorpayIsAvailable = function(){ return false; };
+        if(document.getElementById('flash-object').nodeName !== 'OBJECT') {
+            setTimeout(runOnFlashExists, 1000);
+            return;
+        }
 
-        jungroupOnOpen = function(){};
-        jungroupOnClose = function(){};
-        jungroupOnComplete = function(){};
+        with(window)
+        {
+            sponsorpayTimerId = -1;
+            sponsorpayScript = "about:blank";
+            sponsorpayOnRefresh = function(){};
+            sponsorpayOnReady = function(){};
+            sponsorpayOnOpen = function(){};
+            sponsorpayOnComplete = function(){};
+            sponsorpayOnClose = function(){};
+            sponsorpayOffers = [];
+            sponsorpayIsAvailable = function(){ return false; };
 
-        videoAdId = -1;
-        videoAdReward = -1;
-        videoAdRewardType = "energy";
-        videoOnAdVisible = false;
-        videoOnClose = function(){};
-        videoOnComplete = function(){};
-        videoOnOpen = function(){};
-        videoOnReward = function(){};
+            jungroupOnOpen = function(){};
+            jungroupOnClose = function(){};
+            jungroupOnComplete = function(){};
 
-        initAdvertisements = function(){};
-        initAdvertisementsComplete = function(){};
-        initAnalytics = function(){};
-        initBanner = function(){};
-        initEbuzzing = function(){};
-        initHouseAds = function(){};
-        initVideoAds = function(){};
-        initSponsorPayArmor = function(){};
-        initSponsorPayEnergy = function(){};
-        initSponsorPayGatcha = function(){};
-        initSupersonicAds = function(){};
-        initTrialpayBanner = function(){};
-        initVideoAds = function(){};
+            videoAdId = -1;
+            videoAdReward = -1;
+            videoAdRewardType = "energy";
+            videoOnAdVisible = false;
+            videoOnClose = function(){};
+            videoOnComplete = function(){};
+            videoOnOpen = function(){};
+            videoOnReward = function(){};
 
-        getDealSpotArmor = function(){};
-        getDealSpotEnergy1 = function(){};
-        getDealSpotEnergy2 = function(){};
-        getDealSpotEnergy3 = function(){};
-        getDealSpotEnergy4 = function(){};
-        getDealSpotCash = function(){};
-        dealspotOfferComplete = function(){};
+            initAdvertisements = function(){};
+            initAdvertisementsComplete = function(){};
+            initAnalytics = function(){};
+            initBanner = function(){};
+            initEbuzzing = function(){};
+            initHouseAds = function(){};
+            initVideoAds = function(){};
+            initSponsorPayArmor = function(){};
+            initSponsorPayEnergy = function(){};
+            initSponsorPayGatcha = function(){};
+            initSupersonicAds = function(){};
+            initTrialpayBanner = function(){};
+            initVideoAds = function(){};
 
-        trialPayOnAvailable = function(){};
-        trialPayOnComplete = function(){};
-        trialPayOnUnavailable = function(){};
-        trialPayPaymentOverlayScript = "about:blank";
+            getDealSpotArmor = function(){};
+            getDealSpotEnergy1 = function(){};
+            getDealSpotEnergy2 = function(){};
+            getDealSpotEnergy3 = function(){};
+            getDealSpotEnergy4 = function(){};
+            getDealSpotCash = function(){};
+            dealspotOfferComplete = function(){};
 
-        trackEvent = function(){};
-        trackFlashEvent = function(){};
-        trackGAEvent = function(){};
+            trialPayOnAvailable = function(){};
+            trialPayOnComplete = function(){};
+            trialPayOnUnavailable = function(){};
+            trialPayPaymentOverlayScript = "about:blank";
 
-        refreshAdvertisements = function(){};
-        houseOnOpen = function(){};
-        lifestreetOnOpen = function(){};
-        spotxOnOpen = function(){};
-        FB = null;
+            trackEvent = function(){};
+            trackFlashEvent = function(){};
+            trackGAEvent = function(){};
 
-        optimatic = null;
-        optimaticAdTime = -1;
-        optimaticTimeout = -1;
-        optimaticOnOpen = function(){};
-        optimaticRemoveIframe = function(){};
-        optimaticShowStatic = function(){};
+            refreshAdvertisements = function(){};
+            houseOnOpen = function(){};
+            lifestreetOnOpen = function(){};
+            spotxOnOpen = function(){};
+            FB = null;
 
-        liveRailTest = function(){};
-        liveRailSpotxTest = function(){};
-        liveRailOnOpen = function(){};
+            optimatic = null;
+            optimaticAdTime = -1;
+            optimaticTimeout = -1;
+            optimaticOnOpen = function(){};
+            optimaticRemoveIframe = function(){};
+            optimaticShowStatic = function(){};
 
-        onPageLoad = {};
+            liveRailTest = function(){};
+            liveRailSpotxTest = function(){};
+            liveRailOnOpen = function(){};
 
-        document.head.innerHTML = "";
-        document.head.appendChild( document.createElement("style") ).innerHTML = "body{ position:relative; margin: 0; } #flash-object{ position: absolute; left: 50%; margin-left: -25%; margin-top: -25%; } _:-moz-tree-row(hover), #flash-object{ top: calc( 100% / 1.8 ); } @supports (-webkit-appearance:none) { #flash-object{ top: calc( 100% / 1.8 ); } } #flash-container, #page-container{ height: calc( 350px + 37.5px ) !important; }";
+            onPageLoad = {};
 
-        var contentWrapper = document.getElementById("content-wrapper");
-        var contentMain = contentWrapper.children[0].cloneNode();
-        var appContainer = document.getElementById("app-container");
-        var flashObject = document.getElementById("flash-object");
+            document.head.innerHTML = "";
+            document.head.appendChild( document.createElement("style") ).innerHTML = "body{ position:relative; margin: 0; } #flash-object{ position: absolute; left: 50%; margin-left: -25%; margin-top: -25%; } _:-moz-tree-row(hover), #flash-object{ top: calc( 100% / 1.8 ); } @supports (-webkit-appearance:none) { #flash-object{ top: calc( 100% / 1.8 ); } } #flash-container, #page-container{ height: calc( 350px + 37.5px ) !important; }";
 
-        flashObject.parentNode.removeChild(flashObject);
-        appContainer.parentNode.removeChild(appContainer);
-        contentWrapper = contentWrapper.cloneNode();
-        document.body = document.body.cloneNode();
+            var contentWrapper = document.getElementById("content-wrapper");
+            var contentMain = contentWrapper.children[0].cloneNode();
+            var appContainer = document.getElementById("app-container");
+            var flashObject = document.getElementById("flash-object");
 
-        contentMain.appendChild(appContainer);
-        contentWrapper.appendChild(contentMain);
-        document.body.appendChild(contentWrapper);
-        document.body.appendChild(flashObject);
+            flashObject.parentNode.removeChild(flashObject);
+            appContainer.parentNode.removeChild(appContainer);
+            contentWrapper = contentWrapper.cloneNode();
+            document.body = document.body.cloneNode();
 
-        var buttons = document.createElement("div");
-        buttons.style.position = 'absolute';
+            contentMain.appendChild(appContainer);
+            contentWrapper.appendChild(contentMain);
+            document.body.appendChild(contentWrapper);
+            document.body.appendChild(flashObject);
 
-        var messageButton = document.createElement("button");
-        messageButton.textContent = 'Messages';
-        messageButton.addEventListener('click',
-                                       function() {
-            flashObject.openMessageCenter('');
-        });
+            var buttons = document.createElement("div");
+            buttons.style.position = 'absolute';
 
-        var resizeButton = document.createElement('input');
-        resizeButton.setAttribute('type', 'checkbox');
-        resizeButton.setAttribute('checked', 'checked');
-        resizeButton.setAttribute('id', 'resize_button');
-        var resizeButtonLabel = document.createElement('label');
-        resizeButtonLabel.appendChild(resizeButton);
-        resizeButtonLabel.innerHTML += 'Full screen';
-        /* has to come after innerHTML edit */
-        resizeButtonLabel.children[0].addEventListener('change', scaleFlashContainer);
+            var messageButton = document.createElement("button");
+            messageButton.textContent = 'Messages';
+            messageButton.addEventListener('click',
+                                           function() {
+                flashObject.openMessageCenter('');
+            });
 
-        buttons.appendChild(messageButton);
-        buttons.appendChild(document.createElement('br'));
-        buttons.appendChild(resizeButtonLabel);
-        document.body.insertBefore(buttons, document.body.children[0]);
-        runOnFlashContainerLoaded();
-        window.addEventListener("resize", scaleFlashContainer);
+            var resizeButton = document.createElement('input');
+            resizeButton.setAttribute('type', 'checkbox');
+            resizeButton.setAttribute('checked', 'checked');
+            resizeButton.setAttribute('id', 'resize_button');
+            var resizeButtonLabel = document.createElement('label');
+            resizeButtonLabel.appendChild(resizeButton);
+            resizeButtonLabel.innerHTML += 'Full screen';
+            /* has to come after innerHTML edit */
+            resizeButtonLabel.children[0].addEventListener('change', scaleFlashContainer);
+
+            buttons.appendChild(messageButton);
+            buttons.appendChild(document.createElement('br'));
+            buttons.appendChild(resizeButtonLabel);
+            document.body.insertBefore(buttons, document.body.children[0]);
+            runOnFlashContainerLoaded();
+            window.addEventListener("resize", scaleFlashContainer);
+        }
     }
+
+    runOnFlashExists();
 }
 
 window.document.body.appendChild(document.createElement('script')).textContent = '(' + main + ')();';
