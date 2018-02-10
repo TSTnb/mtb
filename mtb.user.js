@@ -7,7 +7,7 @@
 // @include http*://tbc.tetrisfb.com/index.php*
 // @grant none
 // @run-at document-end
-// @version 0.0.10
+// @version 0.0.11
 // @author morningpee
 // ==/UserScript==
 
@@ -163,7 +163,7 @@ with(window)
     onPageLoad = {};
 
     document.head.innerHTML = "";
-    document.head.appendChild( document.createElement("style") ).innerHTML = "body{ position:relative; margin: 0; } #flash-object{ position: absolute; left: 50%; margin-left: -25%; margin-top: -25%; } _:-moz-tree-row(hover), #flash-object{ top: calc( 100% / 1.8 ); } @supports (-webkit-appearance:none) { #flash-object{ top: calc( 100% / 1.664 ); } } #flash-container, #page-container{ height: calc( 350px + 37.5px ) !important; }";
+    document.head.appendChild( document.createElement("style") ).innerHTML = "body{ position:relative; margin: 0; } #flash-object{ position: absolute; left: 50%; margin-left: -25%; margin-top: -25%; } _:-moz-tree-row(hover), #flash-object{ top: calc( 100% / 1.8 ); } @supports (-webkit-appearance:none) { #flash-object{ top: calc( 100% / 1.8 ); } } #flash-container, #page-container{ height: calc( 350px + 37.5px ) !important; }";
 
     var contentWrapper = document.getElementById("content-wrapper");
     var contentMain = contentWrapper.children[0].cloneNode();
