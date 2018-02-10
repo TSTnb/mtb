@@ -36,7 +36,10 @@ function main()
 
     scaleFlashContainer = function()
     {
-        var fullScreen = document.getElementById('resize_button').checked;
+        var fullScreen = document.getElementById('resize_button');
+        fullScreen = fullScreen !== null
+            ? fullScreen.checked
+            : false;
 
         flashContainer.style.visibility = "initial";
         var screenHeight = innerHeight
@@ -93,12 +96,61 @@ function main()
 
     }
 
+    function buildDOM()
+    {
+        var flashObject = document.getElementById('flash-object');
+
+        document.doctype&&
+            document.replaceChild( document.implementation.createDocumentType('html', '', ''), document.doctype );
+
+        document.replaceChild(
+            document.implementation.createHTMLDocument(document.title).documentElement,
+            document.documentElement
+        );
+        document.head.appendChild( document.createElement("style") ).innerHTML = "body{ position:relative; margin: 0; } #flash-object{ position: absolute; left: 50%; top: 0px; margin-top: 0px; } _:-moz-tree-row(hover), #flash-container, #page-container{ height: calc( 350px + 37.5px ) !important; }";
+
+        document.body.appendChild(flashObject);
+
+        var buttons = document.createElement("div");
+        buttons.style.position = 'absolute';
+
+        var messageButton = document.createElement("button");
+        messageButton.textContent = 'Messages';
+        messageButton.addEventListener('click',
+                                       function() {
+            flashObject.openMessageCenter('');
+        });
+
+        var resizeButton = document.createElement('input');
+        resizeButton.setAttribute('type', 'checkbox');
+        resizeButton.setAttribute('id', 'resize_button');
+        var resizeButtonLabel = document.createElement('label');
+        resizeButtonLabel.appendChild(resizeButton);
+        resizeButtonLabel.innerHTML += 'Full screen';
+        /* has to come after innerHTML edit */
+        resizeButtonLabel.children[0].addEventListener('change', scaleFlashContainer);
+
+        buttons.appendChild(messageButton);
+        buttons.appendChild(document.createElement('br'));
+        buttons.appendChild(resizeButtonLabel);
+        document.body.insertBefore(buttons, document.body.children[0]);
+
+
+    }
     function runOnFlashExists()
     {
         if(document.getElementById('flash-object').nodeName !== 'OBJECT') {
-            setTimeout(runOnFlashExists, 1000);
+            setTimeout(function(){ try{ runOnFlashExists(); }catch(err){ alert(err + '\n' + err.stack);}}, 1000);
             return;
         }
+
+        console.log = function(message)
+        {
+            if(message === 'exAfterUserData') {
+                FB = null;
+                buildDOM();
+            }
+        };
 
         with(window)
         {
@@ -160,7 +212,6 @@ function main()
             houseOnOpen = function(){};
             lifestreetOnOpen = function(){};
             spotxOnOpen = function(){};
-            FB = null;
 
             optimatic = null;
             optimaticAdTime = -1;
@@ -175,47 +226,10 @@ function main()
 
             onPageLoad = {};
 
-            document.head.innerHTML = "";
-            document.head.appendChild( document.createElement("style") ).innerHTML = "body{ position:relative; margin: 0; } #flash-object{ position: absolute; left: 50%; top: 0px; margin-left: -25%; margin-top: 0px; } _:-moz-tree-row(hover), #flash-container, #page-container{ height: calc( 350px + 37.5px ) !important; }";
+            var flashObject = document.getElementById('flash-object');
+            flashObject.style.position = 'absolute';
+            flashObject.style.left = '50%';
 
-            var contentWrapper = document.getElementById("content-wrapper");
-            var contentMain = contentWrapper.children[0].cloneNode();
-            var appContainer = document.getElementById("app-container");
-            var flashObject = document.getElementById("flash-object");
-
-            flashObject.parentNode.removeChild(flashObject);
-            appContainer.parentNode.removeChild(appContainer);
-            contentWrapper = contentWrapper.cloneNode();
-            document.body = document.body.cloneNode();
-
-            contentMain.appendChild(appContainer);
-            contentWrapper.appendChild(contentMain);
-            document.body.appendChild(contentWrapper);
-            document.body.appendChild(flashObject);
-
-            var buttons = document.createElement("div");
-            buttons.style.position = 'absolute';
-
-            var messageButton = document.createElement("button");
-            messageButton.textContent = 'Messages';
-            messageButton.addEventListener('click',
-                                           function() {
-                flashObject.openMessageCenter('');
-            });
-
-            var resizeButton = document.createElement('input');
-            resizeButton.setAttribute('type', 'checkbox');
-            resizeButton.setAttribute('id', 'resize_button');
-            var resizeButtonLabel = document.createElement('label');
-            resizeButtonLabel.appendChild(resizeButton);
-            resizeButtonLabel.innerHTML += 'Full screen';
-            /* has to come after innerHTML edit */
-            resizeButtonLabel.children[0].addEventListener('change', scaleFlashContainer);
-
-            buttons.appendChild(messageButton);
-            buttons.appendChild(document.createElement('br'));
-            buttons.appendChild(resizeButtonLabel);
-            document.body.insertBefore(buttons, document.body.children[0]);
             runOnFlashContainerLoaded();
             window.addEventListener("resize", scaleFlashContainer);
         }
