@@ -7,7 +7,7 @@
 // @include http*://tbc.tetrisfb.com/index.php*
 // @grant none
 // @run-at document-end
-// @version 0.0.9
+// @version 0.0.10
 // @author morningpee
 // ==/UserScript==
 
@@ -180,6 +180,15 @@ with(window)
     document.body.appendChild(contentWrapper);
     document.body.appendChild(flashObject);
 
+    var messageButton = document.createElement("button");
+    messageButton.textContent = 'Messages';
+    messageButton.style.position = 'absolute';
+    messageButton.addEventListener('click',
+        function() {
+            flashObject.openMessageCenter('')
+        });
+
+    document.body.insertBefore(messageButton, document.body.children[0]);
     runOnFlashContainerLoaded();
     window.addEventListener("resize", scaleFlashContainer );
 }
